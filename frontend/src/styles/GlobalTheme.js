@@ -5,6 +5,9 @@ const  GlobalTheme = createMuiTheme({
   palette: {
     primary: {
       main: "#0067ac"
+    },
+    secondary: {
+      main: "rgb(255, 174, 0)"
     }
   },
   typography: {

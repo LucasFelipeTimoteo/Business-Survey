@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom'
 
 import Login from './Login'
 import Register from './Register'
-import Home from './Home/indes';
+import Home from './Home';
 
 
 
