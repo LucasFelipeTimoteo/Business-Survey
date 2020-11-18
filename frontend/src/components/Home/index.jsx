@@ -5,12 +5,14 @@ import {
   Container,
   CssBaseline,
   Typography,
-  Button
+  Button,
+  AppBar
 } from '@material-ui/core';
 
 import {
   Person as PersonIcon,
-  MeetingRoom as MeettingRoomIcon
+  MeetingRoom as MeettingRoomIcon,
+  Equalizer as BarChartIcon
 } from '@material-ui/icons'
 
 import HomeStyle from '../../styles/HomeStyle'
@@ -21,45 +23,61 @@ function Home() {
   return (
     <header className={classes.header}>
       <CssBaseline />
-      <Container className={classes.container} maxWidth="sm" >
 
-        <Typography 
-          variant="h3" 
-          component="h1" 
-          className={classes.title}
-        >
-          Business Survey
-        </Typography>
-        <Typography
-          variant="subtitle1" 
-          className={classes.subtitle}
-        >
-          Please, Login or Register to access the survey and charts
-        </Typography>
+      <AppBar className={classes.appBar}>
+
+        <Link to="login" style={{ textDecoration: "none" }}>
+          <Button
+            startIcon={<PersonIcon />}
+            size="small"
+            variant="outlined"
+            className={classes.loginButton}
+          >
+            Login
+          </Button>
+        </Link>
 
         <Link to="register" style={{ textDecoration: "none" }}>
           <Button
             startIcon={<MeettingRoomIcon />}
-            size="medium"
-            variant="contained"
-            color="secondary"
-            style={{ marginTop: 15 }}
+            size="small"
+            variant="outlined"
+            className={classes.registerButton}
           >
             register
           </Button>
         </Link>
 
-        <Link to="login" style={{ textDecoration: "none" }}>
+      </AppBar>
+
+      <Container className={classes.container} maxWidth="sm" >
+
+        <Typography
+          variant="h3"
+          component="h1"
+          className={classes.title}
+        >
+          Business Survey
+          <BarChartIcon fontSize="large" />
+        </Typography>
+        <Typography
+          variant="subtitle2"
+          className={classes.subtitle}
+        >
+          fill out a survey about your business and have access to charts
+        </Typography>
+
+        <Link to="survey" style={{ textDecoration: "none" }}>
           <Button
-            startIcon={<PersonIcon />}
-            size="medium"
+            color="secondary"
             variant="contained"
-            color="primary"
-            style={{ marginTop: 15 }}
+            size="large"
+            className={classes.goToSurveyButton}
           >
-            Login
-          </Button>
+            Go to Survey
+        </Button>
         </Link>
+
       </Container>
     </header>
   );
