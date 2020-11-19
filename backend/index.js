@@ -6,7 +6,7 @@ const cookieParser = require('cookie-parser')
 
 
 const userRouter = require('./src/routes/userRouter')
-const surveyRouter = require('./src/routes/surveyRouter')
+// const surveyRouter = require('./src/routes/surveyRouter')
 
 const app = express()
 
@@ -17,7 +17,12 @@ app.use(express.json())
 app.use(cookieParser())
 
 // routes
-app.use(surveyRouter)
+// app.use(surveyRouter)
+app.use('/survey',  (req, res) => {
+  const token = req.cookies.jwt
+  console.log(token)
+  res.json({message: "ok"})
+})
 app.use(userRouter)
 
 app.listen(

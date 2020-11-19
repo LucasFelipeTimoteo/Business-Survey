@@ -31,7 +31,7 @@ module.exports.UserController = {
 
         const registeredUser = await insertNewUser("users", newUser)
         const userId = registeredUser[0]
-        res.json({ message: "registered", userId })
+        res.status(201).json({ message: "registered", userId })
       }
     }
     catch (error) {
@@ -71,7 +71,7 @@ module.exports.UserController = {
         const token = jwt.sign({ id: userData.id }, process.env.secretKey)
         res.cookie('jwt', token, { httpOnly: true })
 
-        res.json({ message: "logged" })
+        res.status(200).json({ message: "logged" })
         res.redirect('/survey')
       }
     } catch (error) {
