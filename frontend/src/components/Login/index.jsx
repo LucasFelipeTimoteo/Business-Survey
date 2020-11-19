@@ -17,6 +17,8 @@ import { ArrowBack as ArrowBackIcon } from '@material-ui/icons'
 
 import LoginAndRegisterStyle from '../../styles/LoginAndRegisterStyle';
 
+import api from '../../api'
+
 function Login() {
   // Hooks
   const [email, setEmail] = useState('')
@@ -27,6 +29,19 @@ function Login() {
   // methods
   const changeEmail = (e) => setEmail(e.target.value)
   const changePassword = (e) => setPassword(e.target.value)
+
+  // api
+  const login = (e) => {
+    e.preventDefault()
+
+    const formData = new FormData()
+    formData.append("email", email)
+    formData.append("password", password)
+
+    const data = new URLSearchParams([...formData])
+
+    api.post('/login', data)
+  }
 
   return (
     <>
@@ -42,7 +57,10 @@ function Login() {
           <Typography component="h1" variant="h4">
             Login
         </Typography>
-          <form className={classes.form} noValidate>
+          <form
+            className={classes.form}
+            onSubmit={login}
+          >
             <TextField
               variant="outlined"
               margin="normal"

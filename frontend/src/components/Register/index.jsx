@@ -15,11 +15,13 @@ import { ArrowBack as ArrowBackIcon } from '@material-ui/icons'
 
 import LoginAndRegisterStyle from '../../styles/LoginAndRegisterStyle';
 
+import api from '../../api'
+
 function Register() {
   // Hooks
+  const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [name, setName] = useState('')
 
   // methods
   const changeEmail = (e) => setEmail(e.target.value)
@@ -27,6 +29,20 @@ function Register() {
   const changeName = (e) => setName(e.target.value)
 
   const classes = LoginAndRegisterStyle();
+
+  //api 
+  const register = (e) => {
+    e.preventDefault()
+
+    const formData = new FormData()
+    formData.append("username", name)
+    formData.append("email", email)
+    formData.append("password", password)
+
+    const data = new URLSearchParams([...formData])
+
+    api.post('/register', data)
+  }
 
   return (
     <>
@@ -42,7 +58,10 @@ function Register() {
           <Typography component="h1" variant="h4">
             Register
         </Typography>
-          <form className={classes.form} noValidate>
+          <form
+            onSubmit={register} 
+            className={classes.form}
+          >
             <TextField
               variant="outlined"
               margin="normal"
@@ -55,6 +74,7 @@ function Register() {
               autoFocus
               value={name}
               onChange={changeName}
+              onSubmit={register}
             />
             <TextField
               variant="outlined"

@@ -41,7 +41,10 @@ const HomeStyle = makeStyles((theme) => ({
     background: "#094f7e",
     color: "#6cb1d8",
     borderColor: "#094f7e",
-    margin: "10px 15px"
+    margin: "10px 15px",
+    '&:hover': {
+      borderColor: '#6cb1d8'
+    }
   },
   goToSurveyButton: {
     borderRadius: "30px",
