@@ -7,6 +7,8 @@ import {
 
 import SurveyStyle from '../../styles/SurveyStyle';
 
+import api from '../../api'
+
 function Survey() {
   // styles
   const classes = SurveyStyle()

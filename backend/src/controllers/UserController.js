@@ -71,8 +71,7 @@ module.exports.UserController = {
         const token = jwt.sign({ id: userData.id }, process.env.secretKey)
         res.cookie('jwt', token, { httpOnly: true })
 
-        res.status(200).json({ message: "logged" })
-        res.redirect('/survey')
+        res.status(200).json({ message: "logged" }).redirect('/')
       }
     } catch (error) {
       res.status(400).json({ message: error.message })
